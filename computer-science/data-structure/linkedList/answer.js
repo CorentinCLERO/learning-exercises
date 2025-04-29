@@ -56,28 +56,27 @@ function buildCyclicList(arr, pos) {
   return head;
 }
 
-// For doing exercices
-class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-  }
-
-  insertAtTail(data) {
-    const newNode = new ListNode(data);
-
-    if (this.head === null) {
-      this.head = this.tail = newNode;
-    } else {
-      this.tail.next = newNode;
-      this.tail = newNode;
-    }
-  }
-}
-
 /* ========== EASY: Array to Linked List ========== */
 // Write a function arrayToLinkedList(arr) that takes an array and returns the head of a singly linked list representing the same sequence.
 function arrayToLinkedList(arr) {
+  class LinkedList {
+    constructor() {
+      this.head = null;
+      this.tail = null;
+    }
+
+    insertAtTail(data) {
+      const newNode = new ListNode(data);
+
+      if (this.head === null) {
+        this.head = this.tail = newNode;
+      } else {
+        this.tail.next = newNode;
+        this.tail = newNode;
+      }
+    }
+  }
+
   const linkedList = new LinkedList();
   for (let i = 0; i < arr.length; i++) {
     linkedList.insertAtTail(arr[i]);
