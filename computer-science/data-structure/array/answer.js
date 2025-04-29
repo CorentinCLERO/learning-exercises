@@ -139,39 +139,39 @@ test(subarraySum, [[1, 3, 2], 3], false, "subarraySum([1,4],0) should return");
 // Write a function that returns the length of the longest strictly increasing subsequence in the array.
 function longestIncreasingSubsequence(arr) {
   // Too complex
-  if (arr.length === 0) return 0;
-  let maxIncreasingValue = 1;
-  for (let k = 0; k < arr.length; k++) {
-    let increasingValue = 1;
-    let value = arr[k];
-    for (let i = k + 1; i < arr.length; i++) {
-      for (let j = i; j < arr.length; j++) {
-        if (arr[j] > value) {
-          value = arr[j];
-          increasingValue++;
-        }
-      }
-      if (increasingValue > maxIncreasingValue)
-        maxIncreasingValue = increasingValue;
-      increasingValue = 1;
-      value = arr[k];
-    }
-    value = arr[k];
-    increasingValue = 1;
-  }
-  return maxIncreasingValue;
+  // if (arr.length === 0) return 0;
+  // let maxIncreasingValue = 1;
+  // for (let k = 0; k < arr.length; k++) {
+  //   let increasingValue = 1;
+  //   let value = arr[k];
+  //   for (let i = k + 1; i < arr.length; i++) {
+  //     for (let j = i; j < arr.length; j++) {
+  //       if (arr[j] > value) {
+  //         value = arr[j];
+  //         increasingValue++;
+  //       }
+  //     }
+  //     if (increasingValue > maxIncreasingValue)
+  //       maxIncreasingValue = increasingValue;
+  //     increasingValue = 1;
+  //     value = arr[k];
+  //   }
+  //   value = arr[k];
+  //   increasingValue = 1;
+  // }
+  // return maxIncreasingValue;
 
   // Other implementation
-  // if (arr.length === 0) return 0;
-  // const dp = Array(arr.length).fill(1);
-  // for (let i = 1; i < arr.length; i++) {
-  //   for (let j = 0; j < i; j++) {
-  //     if (arr[i] > arr[j]) {
-  //       dp[i] = Math.max(dp[i], dp[j] + 1);
-  //     }
-  //   }
-  // }
-  // return Math.max(...dp);
+  if (arr.length === 0) return 0;
+  const dp = Array(arr.length).fill(1);
+  for (let i = 1; i < arr.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (arr[i] > arr[j]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1);
+      }
+    }
+  }
+  return Math.max(...dp);
 }
 
 test(
